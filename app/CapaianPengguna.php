@@ -9,7 +9,7 @@ class CapaianPengguna extends Model
     // Maklumat connection database untuk table tblcapaianpengguna.
     protected $connection = 'mysqldbrujukan';
 
-    // Maklumat nama table yang model ini perlu hubungi
+    // Maklumat nama table yang model ini perlu hubungi.
     protected $table = 'tblcapaianpengguna';
 
     /**
