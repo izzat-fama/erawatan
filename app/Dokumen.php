@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokumen extends Model
 {
-    // Maklumat connection database untuk table tblpengguna
+    // Maklumat connection database untuk table tblpengguna.
     protected $connection = 'mysqldbrawatan';
 
     // Maklumat nama table yang model User ini perlu hubungi
