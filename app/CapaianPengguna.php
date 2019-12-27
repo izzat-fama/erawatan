@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CapaianPengguna extends Model
 {
-    // Maklumat connection database untuk table tblcapaianpengguna
+    // Maklumat connection database untuk table tblcapaianpengguna.
     protected $connection = 'mysqldbrujukan';
 
     // Maklumat nama table yang model ini perlu hubungi
