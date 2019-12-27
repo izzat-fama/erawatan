@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DataTables;
-
+use Auth;
 use App\User;
 use App\Individu;
 use App\Hubungan;
+use App\Tuntutan;
 
 class IndividuController extends Controller
 {
@@ -44,7 +45,15 @@ class IndividuController extends Controller
      */
     public function index()
     {
-        return view($this->theme . '.index');
+
+       $pengguna = Auth::user();
+
+        $jumlah_telah_dituntut = Tuntutan::jumlahTelahDituntut($pengguna->profile->employeeno);
+
+        /*return view('pengguna\index', compact('pengguna_tblpayroll')); //compact: pass variable kepada view home*/
+        return view($this->theme . '.index', compact('pengguna', 'jumlah_telah_dituntut'));
+        
+        //return view($this->theme . '.index');
     }
 
     /**
