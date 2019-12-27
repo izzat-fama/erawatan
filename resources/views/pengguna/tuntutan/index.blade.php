@@ -44,7 +44,7 @@
                                                         <td width="600">: {{ Auth::user()->penggunanokp }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="190">Had Kelayakan :</td>
+                                                        <td width="190">Had Kelayakan</td>
                                                         <td width="600">: RM XXX.XX</td>
                                                     </tr>
                                                 </table>
@@ -82,7 +82,7 @@
 
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Cari Entiti</button>
+                <button type="submit" class="btn btn-primary">Cari Klinik</button>
             </div>
         </div>
 

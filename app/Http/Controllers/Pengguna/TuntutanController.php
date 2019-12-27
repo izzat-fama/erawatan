@@ -73,6 +73,10 @@ class TuntutanController extends Controller
         return view($this->theme . '.index', compact('senarai_entiti'));
     }
 
+   
+  
+  
+
     /**
      * Show the form for creating a new resource.
      *
