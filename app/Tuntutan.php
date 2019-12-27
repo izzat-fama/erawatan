@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class Tuntutan extends Model
 {
-    // Maklumat connection database MySQL
+    // Maklumat connection database MySQL.
     protected $connection = 'mysqldbrawatan';
     
     // Maklumat nama table
