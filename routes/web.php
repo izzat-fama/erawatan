@@ -51,6 +51,22 @@ function () {
 
 });
 
+// Amirah: tambah route group untuk benarkan menu kewangan dicapai oleh user admin
+Route::group([
+    'middleware' => ['auth', 'admin.only'], 
+    'prefix' => 'kewangan',
+    'namespace' => 'Kewangan',
+    'as' => 'kewangan.'
+], 
+function () {
+    Route::get('tuntutan/datatables', 'TuntutanController@datatables')->name('tuntutan.datatables');
+    Route::get('tuntutan/export', 'TuntutanExportController@export')->name('tuntutan.export');
+    Route::get('tuntutan/pdf', 'TuntutanExportController@pdf')->name('tuntutan.pdf');
+    Route::post('tuntutan/{id}/status', 'TuntutanStatusController@update')->name('tuntutan.status.update');
+    Route::resource('tuntutan', 'TuntutanController');
+});
+
+
 // Route pengurusan pengguna
 Route::group([
     'middleware' => ['auth'], 

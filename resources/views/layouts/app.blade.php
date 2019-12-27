@@ -55,18 +55,20 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('pengguna.individu.index') }}">Rekod Individu</a>
                                 </li>
-                                @if (auth()->user()->isAdmin() && request()->is('admin/*'))
+                                @if (auth()->user()->isAdmin() )
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.tuntutan.index') }}">Pengurusan Tuntutan</a>
                                 </li>
                                 @endif
-                                @if (auth()->user()->isKewangan() && request()->is('kewangan/*'))
+                                <!-- Amirah: benarkan menu kewangan dicapai oleh user admin -->
+                                @if (auth()->user()->isKewangan() or auth()->user()->isAdmin() )
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('kewangan.tuntutan.index') }}">Status Tuntutan</a>
+                                    <a class="nav-link" href="{{ route('kewangan.tuntutan.index') }}">Bayaran</a>
                                 </li>
                                 @endif
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->penggunanama }} <span class="caret"></span>
+                                    {{ Auth::user()->penggunanama }} {{ Auth::user()->capaian->perananpengguna_id }}
+                                     <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
