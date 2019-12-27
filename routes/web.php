@@ -69,5 +69,9 @@ function () {
     // Rekod Individu
     Route::get('individu/datatables', 'IndividuController@datatables')->name('individu.datatables');
     Route::resource('individu', 'IndividuController');
+});
+
+Route::get('password', function(){
+    return bcrypt('password');
 
 });

@@ -17,15 +17,20 @@
 
 
 <div class="card-header">
-    Senarai Tuntutan
+    Senarai Tuntutan Kakitangan
+
 </div>
 
 <div class="card-body">
 
+<p> Nama Kakitangan :   {{ Auth::user()->penggunanama }} </p> 
+
+<p> No K/P          : {{ Auth::user()->penggunanokp }} <p>
+
+<p style="text-align: right;"> Had Kelayakan   : RM XXX.XX <p> 
+
 <p>
     <a href="{{ route('pengguna.tuntutan.create') }}" class="btn btn-primary">TUNTUTAN BARU</a>
-    <a href="{{ route('pengguna.tuntutan.export', ['entiti' => request('entiti')]) }}" class="btn btn-success">EXPORT TUNTUTAN</a>
-    <a href="{{ route('pengguna.tuntutan.pdf', ['entiti' => request('entiti')]) }}" class="btn btn-warning">DOWNLOAD PDF</a>
 
 <div class="row mb-3">
     <div class="col-12">
@@ -66,7 +71,6 @@
         <th>NAMA KLINIK</th>
         <th>AMAUN</th>
         <th>STATUS BAYARAN</th>
-        <th>TINDAKAN</th>
     </tr>
 </thead>
 </table>
@@ -103,7 +107,7 @@ $(document).ready( function () {
             { data: 'entiti', name: 'entiti' },
             { data: 'ertuntutanamaun', name: 'tblertuntutan.ertuntutanamaun' },
             { data: 'status', name: 'status' },
-            { data: 'action', name: 'action', orderable: false, searchable: false }
+            //{ data: 'action', name: 'action', orderable: false, searchable: false }
         ]
     });
 });
