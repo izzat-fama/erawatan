@@ -33,21 +33,22 @@
 
         <div class="card">
             <div class="card-header">
-                Filter Entiti
+                Carian Kakitangan
             </div>
             <div class="card-body">
 
                 <div class="form-group">
-                    <select name="entiti" class="form-control dropdown-select2">
-                        @foreach ($senarai_entiti as $entiti)
-                        <option value="{{ $entiti->id }}">{{ $entiti->entitinama }}</option>
+                    <select name="kakitangan" class="form-control dropdown-select2">
+                        <option value="">Nama Kakitangan</option>
+                        @foreach ($senarai_kakitangan as $kakitangan)
+                            <option value ="{{ $kakitangan->employeeno}}">{{ $kakitangan->displayname}} </option>
                         @endforeach
                     </select>
-                </div>
+                </div>    
 
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Cari Entiti</button>
+                <button type="submit" class="btn btn-primary">Cari</button>
             </div>
         </div>
 
@@ -59,11 +60,11 @@
 <table class="table table-hover table-bordered" id="tuntutan-datatables">
 <thead class="thead-light">
     <tr>
-        <th>ID TUNTUTAN</th>
-        <th>ID STATUS</th>
-        <th>TARIKH RAWATAN</th>
-        <th>NAMA PESAKIT</th>
-        <th>NAMA KLINIK</th>
+        <th>ID TUNTUTAN</th>        
+        <th>NAMA KAKITANGAN</th>
+        <th>BAHAGIAN</th>
+        <th>JAWATAN</th>
+        <th>NO RESIT</th>
         <th>AMAUN</th>
         <th>STATUS BAYARAN</th>
         <th>TINDAKAN</th>
@@ -73,11 +74,11 @@
     @foreach ($query as $status)
     <tr>
         <td>{{ $status->ertuntutan_id }}</td>
-        <td>{{ $status->last_id }}</td>
-        <td>{{ $status->tuntutan->ertuntutantarikhrawat ?? "" }}</td>
-        <td>{{ $status->tuntutan->individu->individunama ?? "" }}</td>
-        <td>{{ $status->tuntutan->entiti->entitinama ?? "" }}</td>
-        <td>{{ $status->tuntutan->ertuntutanamaun ?? "" }}</td>
+        <td>{{ $status->payrollfamaofficer->displayname ?? "" }}</td>
+        <td>{{ $status->payrollfamaofficer->entityname ?? "" }}</td>
+        <td>{{ $status->payrollfamaofficer->position ?? "" }}</td> 
+        <td>{{ $status->ertuntutannoresit ?? "" }}</td>     
+        <td>{{ $status->ertuntutanamaun ?? "" }}</td>
         <td>{{ $status->statusAkhir->refStatus->status ?? "" }}</td>
         <td></td>
     </tr>
@@ -85,6 +86,7 @@
 </tbody>
 </table>
 
+ {{-- {{ dd($status) }} --}}
 </div>
 
 <div class="card-footer">

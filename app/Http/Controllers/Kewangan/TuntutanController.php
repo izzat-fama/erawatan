@@ -13,6 +13,7 @@ use App\Tuntutan;
 use App\TuntutanStatus;
 use App\Entiti;
 use App\Mail\TuntutanBaru;
+use App\PayrollFamaOfficer;
 
 class TuntutanController extends Controller
 {
@@ -69,8 +70,8 @@ class TuntutanController extends Controller
      */
     public function index()
     {
-        $senarai_entiti = Entiti::whereIn('entitikod', ['02', '03', '04'])
-        ->select('entitinama', 'id')
+        $senarai_kakitangan = PayrollFamaOfficer::select('displayname','employeeno')
+        ->orderBy('displayname','asc')
         ->get();
 
         $sub = TuntutanStatus::orderBy('id','DESC');
@@ -83,8 +84,10 @@ class TuntutanController extends Controller
                     $join->on('tblertuntutan.id', '=', 'latest_status.ertuntutan_id');
                 })
                 ->get();
+        
+        //dd($query);
 
-        return view($this->theme . '.index', compact('senarai_entiti', 'query'));
+        return view($this->theme . '.index', compact('senarai_kakitangan', 'query'));
     }
 
 

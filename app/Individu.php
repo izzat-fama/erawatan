@@ -54,4 +54,6 @@ class Individu extends Model
     {
         return $this->belongsTo(Hubungan::class);
     }
+
+    
 }

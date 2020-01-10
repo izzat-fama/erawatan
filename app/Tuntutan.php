@@ -69,6 +69,12 @@ class Tuntutan extends Model
         return $this->hasMany(Dokumen::class, 'ertuntutan_id');
     }
 
+    //relationship kpd payrollfamaofficer
+    public function payrollfamaofficer()
+    {                                                            
+        return $this->belongsTo(PayrollFamaOfficer::class, 'employeeno','employeeno');
+    }
+    
     public static function jumlahTelahDituntut($employee)
     {
         $current_year = Carbon::now()->year;
