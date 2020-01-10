@@ -23,14 +23,43 @@
 
 <div class="card-body">
 
-<p> Nama Kakitangan :   {{ Auth::user()->penggunanama }} </p> 
-
-<p> No K/P          : {{ Auth::user()->penggunanokp }} <p>
-
-<p style="text-align: right;"> Had Kelayakan   : RM XXX.XX <p> 
+<!-- start profil individu -->
+<div class="row mb-3">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-info text-white" >KAKITANGAN</div>
+                                    <div class="card-body"> 
+                                        <div class="row">   
+                                            <div class="col-md-4">
+                                                <p align="center"><img src="{{ asset('images/placeholderuser.png') }}" class="img-thumbnail align-self-center" width="200"></p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <table class="table table-borderless table-sm" align="center">
+                                                    <tr>
+                                                        <td width="190">Nama Kakitangan</td>
+                                                        <td width="600">: {{ Auth::user()->penggunanama }}</td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td width="190">No K/P</td>
+                                                        <td width="600">: {{ Auth::user()->penggunanokp }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="190">Had Kelayakan</td>
+                                                        <td width="600">: RM XXX.XX</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+<!-- end profil individu -->
 
 <p>
-    <a href="{{ route('pengguna.tuntutan.create') }}" class="btn btn-primary">TUNTUTAN BARU</a>
+      <a href="{{ route('pengguna.tuntutan.create') }}" class="btn btn-primary btn-align-end">TUNTUTAN BARU</a>
+</p>
 
 <div class="row mb-3">
     <div class="col-12">
@@ -53,7 +82,7 @@
 
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Cari Entiti</button>
+                <button type="submit" class="btn btn-primary">Cari Klinik</button>
             </div>
         </div>
 

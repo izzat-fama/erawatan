@@ -35,8 +35,9 @@ function () {
 });
 
 // Route pengurusan kewangan admin
+// Amirah: tambah middleware admin.only untuk benarkan menu kewangan dicapai oleh user admin
 Route::group([
-    'middleware' => ['auth', 'kewangan.only'], 
+    ['middleware' => ['auth', 'kewangan.only', 'admin.only']], 
     'prefix' => 'kewangan',
     'namespace' => 'Kewangan',
     'as' => 'kewangan.'
