@@ -6,21 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class MapStatus extends Model
 {
-    // Maklumat connection database untuk table tblrefstatus
     protected $connection = 'mysqldbrujukan';
 
-    // Maklumat nama table yang model ini perlu hubungi
     protected $table = 'tblmapstatus';
 
     // Relationship ke table tblmapstatus
     public function status()
     {
-        return $this->belongsTo(Status::class);
+    	return $this->belongsTo(Status::class,'status_id');
     }
 
-    // Relationship ke table tblrefkumpulantatus
+    // Relationship ke table tblrefkumpulanstatus
     public function kumpulanstatus()
     {
-        return $this->belongsTo(KumpulanStatus::class);
+    	return $this->belongsTo(KumpulanStatus::class);
     }
 }

@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hubungan extends Model
 {
-    // Maklumat connection database untuk table tblpengguna
-    protected $connection = 'mysqldbrujukan';
+     protected $connection = 'mysqldbrujukan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
-    protected $table = 'tblrefhubungan';
+    protected $table = 'dbrujukan.tblrefhubungan';
 
     /**
      * Indicates if the model should be timestamped.
@@ -18,4 +16,13 @@ class Hubungan extends Model
      * @var bool
      */
     public $timestamps = false;
+    
+    /**
+    *the attributes that are mass assignable
+    *@var array
+    **/
+    protected $fillable = [
+    	'hubungankod',
+		'hubungan'
+	];
 }
