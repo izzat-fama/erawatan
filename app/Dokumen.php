@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokumen extends Model
 {
-    // Maklumat connection database untuk table tblpengguna.
     protected $connection = 'mysqldbrawatan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
     protected $table = 'tblerdokumen';
 
     /**
@@ -18,30 +16,33 @@ class Dokumen extends Model
      * @var bool
      */
     public $timestamps = false;
-
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    *the attributes that are mass assignable
+    *@var array
+    **/
     protected $fillable = [
-        'ermenu_id',
-        'jenisdokumen_id',
-        'erdokumennama',
-        'erdokumennoruj',
-        'erdokumenpath',
-        'erdokumentarikh',
-        'employeeno',
-        'individu_id',
-        'ertuntutan_id',
-        'idpenggunamasuk',
-        'idpenggunakmskini',
-        'tkhmasakmskini'
-    ];
+    	'jenisdokumen_id',
+		'erdokumennama',
+		'erdokumennoruj',
+		'erdokumenpath',
+		'erdokumentarikh',
+		'employeeno',
+		'individu_id',
+		'ertuntutan_id',
+		'idpenggunamasuk',
+		'tkhmasamasuk',
+		'idpenggunakmskini',
+		'tkhmasakmskini'
+	];
 
-    // Relation ke table tuntutan
     public function tuntutan()
     {
         return $this->belongsTo(Tuntutan::class, 'ertuntutan_id');
+    }
+
+    public function individu()
+    {
+        return $this->belongsTo(Individu::class, 'ertuntutan_id');
     }
 }
