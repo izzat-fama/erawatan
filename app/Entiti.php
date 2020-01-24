@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entiti extends Model
 {
-    // Maklumat connection database untuk table tblpengguna
     protected $connection = 'mysqldbrujukan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
     protected $table = 'tblrefentiti';
 
     /**
@@ -18,4 +16,24 @@ class Entiti extends Model
      * @var bool
      */
     public $timestamps = false;
+    
+    /**
+    *the attributes that are mass assignable
+    *@var array
+    **/
+    protected $fillable = [
+    	'entiti_id',
+		'entitikod',
+		'entitinama',
+		'negeri_id',
+		'idpenggunamasuk',
+		'tkhmasamasuk',
+		'idpenggunakmskini',
+		'tkhmasakmskini'
+	];
+
+    public function tuntutan()
+    {
+        return $this->hasMany(Tuntutan::class,'entiti_id');
+    }
 }
