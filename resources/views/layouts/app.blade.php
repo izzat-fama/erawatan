@@ -55,6 +55,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('pengguna.individu.index') }}">Rekod Individu</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('individu.index') }}">
+                                       Rekod Tanggungan
+                                    </a>
+                                </li>
+                                @if (auth()->user()->isAdminSemak() || auth()->user()->isAdminSah())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.individu.index') }}">
+                                       Semak Tanggungan
+                                    </a>
+                                    </div>
+                                </li>
+                                @endif
                                 @if (auth()->user()->isAdmin() )
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.tuntutan.index') }}">Pengurusan Tuntutan</a>

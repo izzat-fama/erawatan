@@ -71,6 +71,26 @@ Route::post('ajaxKiraUmur', 'Pengguna\IndividuController@ajaxKiraUmur');
 Route::post('ajaxSetStatusAktif', 'Pengguna\IndividuController@ajaxSetStatusAktif');
 Route::resource('individu', 'Pengguna\IndividuController');
 
+// Route pengurusan pengguna
+Route::group([
+    'middleware' => ['auth'], 
+    'prefix' => 'pengguna',
+    'namespace' => 'Pengguna',
+    'as' => 'pengguna.'
+], 
+function () {
+
+    // Rekod Tuntutan
+    Route::get('tuntutan/datatables', 'TuntutanController@datatables')->name('tuntutan.datatables');
+    Route::get('tuntutan/export', 'TuntutanExportController@export')->name('tuntutan.export');
+    Route::get('tuntutan/pdf', 'TuntutanExportController@pdf')->name('tuntutan.pdf');
+    Route::resource('tuntutan', 'TuntutanController');
+
+    // Rekod Individu
+    Route::get('individu/datatables', 'IndividuController@datatables')->name('individu.datatables');
+    Route::resource('individu', 'IndividuController');
+
+});
 
 Route::get('/pengguna', function(){
 
