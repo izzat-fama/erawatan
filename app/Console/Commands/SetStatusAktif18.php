@@ -48,15 +48,16 @@ class SetStatusAktif18 extends Command
      */
     public function handle()
     {
-        $dataIndividu = Individu::select(['id','individutarikhlahir','statuspekerjaan_id'])->get();
+        $dataIndividu = Individu::select(['id','individutarikhlahir','statuspekerjaan_id', 'individudaif','individuoku','hubungan_id'])->get();
 
+        \Log::info($dataIndividu);
         foreach($dataIndividu as $individu)
         {
             $tkhLahir = strtotime($individu->individutarikhlahir);
             $hariLahir = date('d-m', $tkhLahir);
             $tahunLahir = date("Y", $tkhLahir);
 
-            if((date('Y') - $tahunLahir) == 18)
+            if(((date('Y') - $tahunLahir) == 18 && $individu->individudaif == 'T' && $individu->individuoku == 'T' && $individu->hubungan_id == 3 ))
             {
                 if($hariLahir <= date('d-m'))
                 {
