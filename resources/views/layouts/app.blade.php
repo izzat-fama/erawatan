@@ -55,6 +55,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('pengguna.individu.index') }}">Rekod Individu</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('pengguna.senaraiklinik.index') }}">Senarai Klinik</a>
+                                </li>
                                 @if (auth()->user()->isAdmin() )
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.tuntutan.index') }}">Pengurusan Tuntutan</a>

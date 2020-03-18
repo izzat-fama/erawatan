@@ -70,6 +70,10 @@ function () {
     // Rekod Individu
     Route::get('individu/datatables', 'IndividuController@datatables')->name('individu.datatables');
     Route::resource('individu', 'IndividuController');
+
+     // Rekod senarai klinik
+    Route::get('senaraiklinik/datatables', 'SenaraiklinikController@datatables')->name('senaraiklinik.datatables');
+    Route::resource('senaraiklinik', 'SenaraiklinikController');
 });
 
 Route::get('password', function(){
