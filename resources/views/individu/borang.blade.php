@@ -46,7 +46,7 @@
                             <div class="form-group row">
                                 <label for="individunama" class="col-sm-3 col-form-label">Nama Tanggungan</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="individunama">
+                                    <input type="text" class="form-control" name="individunama" value="{{ old('individunama')}}">
                                 </div>
                             </div>
 
@@ -56,26 +56,26 @@
                                     <select name="hubungan_id" class="form-control" id="hubungan_id">
                                         <option value="">-- Sila Pilih --</option>
                                          @foreach( $senarai_hubungan as $hubungan )
-                                        <option value="{{ $hubungan->id }}">{{ $hubungan->hubungan }}
+                                        <option value="{{ $hubungan->id }}" @if(old('hubungan_id') == $hubungan->id) {{ 'selected' }} @endif>{{ $hubungan->hubungan }}
                                         @endforeach
                                     </select>
                                 </div>
                            
                                 <label for="individunoid" class="col-sm-3 col-form-label">No K/P Tanggungan</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="individunoid" id="individunoid" >
+                                    <input type="text" class="form-control" name="individunoid" id="individunoid" value="{{ old('individunoid')}}">
                                 </div>
                             </div>                            
 
                             <div class="form-group row">
                                  <label for="individutarikhlahir" class="col-sm-3 col-form-label">Tarikh Lahir</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="individutarikhlahir" id="individutarikhlahir">
+                                    <input type="text" class="form-control" name="individutarikhlahir" id="individutarikhlahir" value="{{ old('individutarikhlahir')}}">
                                 </div>
 
                                 <label for="individuumur" class="col-sm-3 col-form-label">Umur</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="individuumur" id="individuumur">
+                                    <input type="text" class="form-control" name="individuumur" id="individuumur" value="{{ old('individuumur')}}">
                                 </div>
                                 </div>
 
@@ -85,7 +85,7 @@
                                     <select name="statuspekerjaan_id" class="form-control">
                                         <option value="">-- Sila Pilih --</option>
                                          @foreach( $map_status_pekerjaan as $status_pekerjaan )
-                                        <option value="{{ $status_pekerjaan->id }}">{{ $status_pekerjaan->status->status }}
+                                        <option value="{{ $status_pekerjaan->id }}"  @if(old('statuspekerjaan_id') == $status_pekerjaan->id) {{ 'selected' }} @endif>{{ $status_pekerjaan->status->status }}
                                         @endforeach
                                     </select>
                                 </div>
@@ -93,10 +93,10 @@
                             <div class="form-group row">
                                 <label for="jenisdokumen_id" class="col-sm-3 col-form-label">Jenis Dokumen</label>
                                 <div class="col-sm-4">
-                                    <select name="jenisdokumen_id" class="form-control">
+                                    <select name="jenisdokumen_id" class="form-control" >
                                         <option value="">-- Sila Pilih --</option>
                                          @foreach( $senarai_jenis_dokumen as $jenis_dokumen )
-                                        <option value="{{ $jenis_dokumen->id }}">{{ $jenis_dokumen->jenisdokumen }}
+                                        <option value="{{ $jenis_dokumen->id }}" @if(old('jenisdokumen_id') == $jenis_dokumen->id) {{ 'selected' }} @endif >{{ $jenis_dokumen->jenisdokumen }}
                                         @endforeach
                                     </select>
                                 </div>
