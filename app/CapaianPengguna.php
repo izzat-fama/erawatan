@@ -12,11 +12,6 @@ class CapaianPengguna extends Model
     // Maklumat nama table yang model ini perlu hubungi.
     protected $table = 'tblcapaianpengguna';
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
     public $timestamps = false;
 
     // Relationship kepada table tblpengguna

@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Individu extends Model
 {
-    // Maklumat connection database untuk table tblpengguna
     protected $connection = 'mysqldbrawatan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
     protected $table = 'tblrefindividu';
 
     /**
@@ -18,42 +16,65 @@ class Individu extends Model
      * @var bool
      */
     public $timestamps = false;
-
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    *the attributes that are mass assignable
+    *@var array
+    **/
     protected $fillable = [
-        'individukeluarga',
-        'employeeno',
-        'individunoid',
-        'jenispengenalan_id',
-        'individunama',
-        'hubungan_id',
-        'individutarikhlahir',
-        'statusindividu_id',
-        'statuspekerjaan_id',
-        'individuoku',
-        'individucatatan',
-        'individutarikhstatus',
-        'individustatusoleh',
-        'idpenggunamasuk',
-        'idpenggunakmskini',
-        'tkhmasakmskini'
-    ];
+    	'individukeluarga',
+		'employeeno',
+		'individunoid',
+		'jenispengenalan_id',
+		'individunama',
+		'hubungan_id',
+		'individutarikhlahir',
+		'statusindividu_id',
+		'statuspekerjaan_id',
+		'individuoku',
+        'individudaif',
+		'individucatatan',
+		'individutarikhstatus',
+		'individustatusoleh',
+		'idpenggunamasuk',
+		'tkhmasamasuk',
+		'idpenggunakmskini',
+		'tkhmasakmskini'
+	];
 
-    // Relationship kepada table ertuntutan
+	public function refHubungan()
+    {
+        return $this->belongsTo(Hubungan::class, 'hubungan_id');
+    }
+
+    public function dokumen()
+    {
+        return $this->hasMany(Dokumen::class, 'individu_id');
+    }
+
     public function tuntutan()
     {
         return $this->hasMany(Tuntutan::class, 'individu_id');
     }
 
-    // Relationship kepada table ertuntutan
-    public function hubungan()
+    public function statusIndividu()
     {
-        return $this->belongsTo(Hubungan::class);
+        return $this->hasMany(IndividuStatus::class, 'individu_id');
     }
 
-    
+    public function statusAkhirIndividu()
+    {
+        return $this->hasOne(IndividuStatus::class, 'individu_id')
+        ->orderBy('id', 'desc');
+    }
+
+    public function refStatusAktif()
+    {
+        return $this->belongsTo(MapStatus::class, 'statusindividu_id');
+    }
+
+    public function kakitangan()
+    {
+        return $this->belongsTo(Profile::class, 'employeeno', 'employeeno');
+    }
 }

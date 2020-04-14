@@ -10,18 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    // Maklumat connection database untuk table tblpengguna
+    //maklumat connection database untuk table tblpengguna
     protected $connection = 'mysqldbrujukan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
+    //maklumat nama table yang user ini perlu hubungi
     protected $table = 'tblpengguna';
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +24,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'penggunanokp', 'email', 'erkatalaluan',
     ];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,23 +50,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relationship kepada table payrollfamaofficer
     public function profile()
     {
+        //Relationship kepada table payrollfamaofficer
         return $this->hasOne(Profile::class, 'icno', 'penggunanokp');
     }
 
-    // Relationship kepada table tblcapaianpengguna dimana ID aplikasi erawatan = 3
+    //Relationship kepada table tblcapaianpengguna dimana aplikasi erawatan=3
     public function capaian()
     {
+        //Relationship kepada table payrollfamaofficer
         return $this->hasOne(CapaianPengguna::class, 'pengguna_id')
         ->where('aplikasi_id', '=', 3);
     }
 
-    // Semak role pengguna adakah admin (ID = 1)?
+    //Semak role pengguna adakah admin (ID = 1)?
     public function isAdmin()
     {
-        if (auth()->user()->capaian->perananpengguna_id == 1)
+        if(auth()->user()->capaian->perananpengguna_id == 1)
         {
             return true;
         }
@@ -74,15 +75,37 @@ class User extends Authenticatable
         return false;
     }
 
-    // Semak role pengguna adakah kewangan (ID = 7)?
+    //Semak role pengguna adakah kewangan (ID = 7)?
     public function isKewangan()
     {
-        if (auth()->user()->capaian->perananpengguna_id == 7)
+        if(auth()->user()->capaian->perananpengguna_id == 7)
         {
             return true;
         }
-        
-        return false;   
+
+        return false;
+    }
+
+    //Semak role pengguna adakah penyemak pengurusan (ID = 2)?
+    public function isAdminSemak()
+    {
+        if(auth()->user()->capaian->perananpengguna_id == 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    //Semak role pengguna adakah pelulus pengurusan (ID = 3)?
+    public function isAdminSah()
+    {
+        if(auth()->user()->capaian->perananpengguna_id == 3)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public function getAuthPassword()

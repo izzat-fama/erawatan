@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peruntukan extends Model
 {
-    // Maklumat connection database untuk table tblpengguna
-    protected $connection = 'mysqldbrawatan';
+   	protected $connection = 'mysqldbrawatan';
 
-    // Maklumat nama table yang model User ini perlu hubungi
     protected $table = 'tblrefperuntukan';
 
     /**
@@ -18,20 +16,19 @@ class Peruntukan extends Model
      * @var bool
      */
     public $timestamps = false;
-
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    *the attributes that are mass assignable
+    *@var array
+    **/
     protected $fillable = [
-        'peruntukantarikhmula',
-        'peruntukantarikhakhir',
-        'tarafjawatan_id',
-        'statusperkahwinan_id',
-        'peruntukan',
-        'idpenggunamasuk',
-        'idpenggunakmskini',
-        'tkhmasakmskini'
-    ];
+    	'peruntukantarikhmula',
+		'peruntukantarikhakhir',
+		'tarafjawatan_id',
+		'statusperkahwinan_id',
+		'idpenggunamasuk',
+		'tkhmasamasuk',
+		'idpenggunakmskini',
+		'tkhmasakmskini'
+	];
 }

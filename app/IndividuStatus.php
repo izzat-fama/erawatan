@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TuntutanStatus extends Model
+class IndividuStatus extends Model
 {
     protected $connection = 'mysqldbrawatan';
 
-    protected $table = 'tblertuntutanstatus';
+    protected $table = 'tblrefindividustatus';
 
     /**
      * Indicates if the model should be timestamped.
@@ -22,11 +22,11 @@ class TuntutanStatus extends Model
     *@var array
     **/
     protected $fillable = [
-    	'ertuntutan_id',
-		'ertuntutanstatusno',
-		'statustuntutan_id',
-		'ertuntutanstatustarikh',
-		'ertuntutanstatuscatatan',
+    	'individu_id',
+		'individustatusno',
+		'statusindividu_id',
+		'individustatustarikh',
+		'individustatuscatatan',
 		'employeeno',
 		'idpenggunamasuk',
 		'tkhmasamasuk',
@@ -36,6 +36,6 @@ class TuntutanStatus extends Model
 
     public function refStatus()
     {
-        return $this->belongsTo(Status::class, 'statustuntutan_id');
+        return $this->belongsTo(Status::class, 'statusindividu_id');
     }
 }
